@@ -1,19 +1,26 @@
-function isSimple(number) {
+const input = prompt("Введіть число:");
+
+let isPrime = true;
+
+if (isNaN(input)) {
+  console.log("Некоректне значення");
+} else {
+  const number = parseInt(input);
+
   if (number <= 1) {
-    return false; 
-  }
-  for (let i = 2; i <= number / 2; i++) {
-    if (number % i === 0) {
-      return false; 
+    isPrime = false;
+  } else {
+    for (let i = 2; i <= number / 2; i++) {
+      if (number % i === 0) {
+        isPrime = false;
+        break; 
+      }
     }
   }
-  return true; 
-}
 
-const input = 18; // тут можно вставити число для перевірки
-
-if (isSimple(input)) {
-  console.log(`Число ${input} є простим числом.`);
-} else {
-  console.log(`Число ${input} не є простим числом.`);
+  if (isPrime) {
+    console.log(`Число ${number} є простим числом.`);
+  } else {
+    console.log(`Число ${number} не є простим числом.`);
+  }
 }
