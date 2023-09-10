@@ -1,0 +1,7 @@
+function reverseString() {
+  const str = prompt('Введіть рядок для реверсу:');
+  const reversedStr = str.split('').reverse().join('');
+  console.log(`Реверсований рядок: ${reversedStr}`);
+}
+
+reverseString();
