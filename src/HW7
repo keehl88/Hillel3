@@ -1,0 +1,15 @@
+function reverseArray(arr) {
+  const reversed = [];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    reversed.push(arr[i]);
+  }
+  return reversed;
+}
+
+const inputString = prompt("Введіть елементи масиву через кому (наприклад, 1, 2, 3, 4, 5):");
+
+const originalArray = inputString.split(",").map(item => parseInt(item));
+
+const reversedArray = reverseArray(originalArray);
+
+console.log(reversedArray); // [5, 4, 3, 2, 1]
