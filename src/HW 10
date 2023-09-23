@@ -1,0 +1,25 @@
+const notifications = {
+  inbox: [
+    { id: 1, message: 'New message 1' },
+    { id: 2, message: 'New message 2' }
+  ],
+  updates: [
+    { id: 3, message: 'Update 1' },
+    { id: 4, message: 'Update 2' }
+  ]
+};
+
+const notificationsIterator = {
+  [Symbol.iterator]: function* () {
+    for (const key in notifications) {
+      const sublist = notifications[key];
+      for (const item of sublist) {
+        yield item;
+      }
+    }
+  }
+};
+
+for (const notification of notificationsIterator) {
+  console.log(notification);
+}
