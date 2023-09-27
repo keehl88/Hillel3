@@ -1,0 +1,17 @@
+function logArguments(fn) {
+  return function (...args) {
+    console.log('Arguments:', args);
+    return fn(...args);
+  };
+}
+
+const originalFunction = (a, b, c) => {
+  console.log('Original function called with arguments:', a, b, c);
+};
+
+const decoratedFunction = logArguments(originalFunction);
+
+const str = prompt('Введіть аргументи (через кому):');
+const argsArray = str.split(',').map(arg => parseFloat(arg));
+
+decoratedFunction(...argsArray);
