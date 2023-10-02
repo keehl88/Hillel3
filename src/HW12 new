@@ -1,14 +1,15 @@
 function summarize(num) {
-  return function(additionalNum) {
-    const numToAdd = typeof additionalNum === 'number' ? additionalNum : 1;
-    return parseFloat(num) + numToAdd;
-  };
+    return function(additionalNum = 1) { 
+        return num + additionalNum;
+    };
 }
 
 const str = prompt('Введіть число: ');
 const num = parseFloat(str);
 
-const addFunction = summarize(num);
-
-console.log(addFunction(3)); // Результат: num + 3
-console.log(addFunction());  // Результат: num + 1 (бо аргумент не передано)
+if (!isNaN(num)) {
+    const addFunction = summarize(num);
+    console.log(addFunction(3)); // передае аргумент за замовченням
+} else {
+    console.log('Будь ласка, введіть валідне число');
+}
