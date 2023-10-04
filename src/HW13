@@ -1,0 +1,48 @@
+function Student(name, surname, yearOfBirth, grades, attendance, course) {
+    this.name = name;
+    this.surname = surname;
+    this.yearOfBirth = yearOfBirth;
+    this.grades = grades || []; // if grades are not provided, default to an empty array
+    this.attendance = attendance || []; // if attendance is not provided, default to an empty array
+    this.course = course;
+
+    this.addGrade = function(grade) {
+        this.grades.push(grade);
+    }
+
+    this.addAttendance = function(attended) {
+        this.attendance.push(attended);
+    }
+
+    this.getAverageGrade = function() {
+        if (this.grades.length === 0) return 0;
+        var sum = this.grades.reduce(function(a, b) { return a + b; });
+        return sum / this.grades.length;
+    }
+
+    this.getAverageAttendance = function() {
+        if (this.attendance.length === 0) return 0;
+        var sum = this.attendance.reduce(function(a, b) { return a + b; });
+        return sum / this.attendance.length;
+    }
+
+    this.getTotalAttendedClasses = function() {
+        return this.attendance.reduce(function(a, b) { return a + b; }, 0);
+    }
+
+    this.changeCourse = function(newCourse) {
+        this.course = newCourse;
+        this.grades = []; // reset grades when changing the course
+        this.attendance = []; // reset attendance when changing the course
+    }
+
+    this.getInfo = function() {
+        return `Name: ${this.name}, Surname: ${this.surname}, Year of Birth: ${this.yearOfBirth}, Average Grade: ${this.getAverageGrade()}, Average Attendance: ${this.getAverageAttendance()}, Total Attended Classes: ${this.getTotalAttendedClasses()}, Course: ${this.course}`;
+    }
+}
+
+// Create a new student object
+var student1 = new Student("Johnny", "Depp", 1994, [100, 80, 90], [1, 1, 0, 1], "Liberal Arts");
+
+// Log student info to the console
+console.log(student1.getInfo());
