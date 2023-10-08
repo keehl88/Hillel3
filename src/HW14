@@ -1,0 +1,77 @@
+class TodoList {
+  constructor() {
+    this.notes = [];
+  }
+
+  // Method to add a new note
+  addNote(noteText) {
+    if (noteText.trim() !== "") {
+      const note = {
+        text: noteText,
+        completed: false,
+      };
+      this.notes.push(note);
+    }
+  }
+
+  // Method to edit an existing note
+  editNote(index, newText) {
+    if (index >= 0 && index < this.notes.length && newText.trim() !== "") {
+      this.notes[index].text = newText;
+    }
+  }
+
+  // Method to delete a note
+  deleteNote(index) {
+    if (index >= 0 && index < this.notes.length) {
+      this.notes.splice(index, 1);
+    }
+  }
+
+  // Method to get information about a note
+  getNoteInfo(index) {
+    if (index >= 0 && index < this.notes.length) {
+      return this.notes[index];
+    }
+    return null;
+  }
+
+  // Method to get all notes
+  getAllNotes() {
+    return this.notes;
+  }
+
+  // Method to mark a note as completed
+  markNoteAsCompleted(index) {
+    if (index >= 0 && index < this.notes.length) {
+      this.notes[index].completed = true;
+    }
+  }
+
+  // Method to get the total number of notes
+  getNumberOfNotes() {
+    return this.notes.length;
+  }
+
+  // Method to get the number of incomplete notes
+  getNumberOfIncompleteNotes() {
+    return this.notes.filter((note) => !note.completed).length;
+  }
+}
+
+// Example usage:
+const myTodoList = new TodoList();
+
+myTodoList.addNote("Example task 1");
+myTodoList.addNote("Example task 2");
+myTodoList.addNote("Example task 3");
+
+console.log(myTodoList.getAllNotes());
+
+myTodoList.editNote(0, "Edited task 1");
+console.log(myTodoList.getNoteInfo(0));
+
+myTodoList.markNoteAsCompleted(1);
+
+console.log("Total number of notes:", myTodoList.getNumberOfNotes());
+console.log("Number of incomplete notes:", myTodoList.getNumberOfIncompleteNotes());
