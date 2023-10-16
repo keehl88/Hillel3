@@ -1,0 +1,34 @@
+function isPalindrome(num) {
+  const strNum = num.toString();
+  const reversedNum = strNum.split('').reverse().join('');
+  return strNum === reversedNum;
+}
+
+function findPalindrome(num) {
+  let steps = 0;
+  let result = num;
+
+  while (!isPalindrome(result)) {
+    const reversedNum = parseInt(result.toString().split('').reverse().join(''), 10);
+    result += reversedNum;
+    steps++;
+
+    if (steps > 1000) {  // Limit the number of steps to avoid an infinite loop
+      return {
+        result: 'Not found within 1000 steps',
+        steps: steps
+      };
+    }
+  }
+
+  return {
+    result: result,
+    steps: steps
+  };
+}
+
+const inputNumber = 196;
+const palindromeInfo = findPalindrome(inputNumber);
+console.log('Input number:', inputNumber);
+console.log('Palindrome:', palindromeInfo.result);
+console.log('Steps:', palindromeInfo.steps);
