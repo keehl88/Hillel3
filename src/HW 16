@@ -1,0 +1,11 @@
+function randomDelayPrint(message) {
+  for (let i = 0; i < message.length; i++) {
+    const letter = message[i];
+    const delay = Math.random() * 1000; // Генеруємо випадкову затримку в межах від 0 до 1 секунди
+    setTimeout(() => {
+      console.log(letter); // Виводимо літеру після затримки
+    }, delay);
+  }
+}
+
+randomDelayPrint("Hello");
