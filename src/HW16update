@@ -1,0 +1,12 @@
+function randomDelayPrint(message, index = 0) {
+  if (index < message.length) {
+    const letter = message[index];
+    const delay = Math.random() * 1000;
+    setTimeout(() => {
+      console.log(letter);
+      randomDelayPrint(message, index + 1);
+    }, delay);
+  }
+}
+
+randomDelayPrint("Hello");
